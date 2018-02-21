@@ -1,0 +1,25 @@
+extends layout
+head
+ title Tiny-shop - Register
+body
+    block content
+     .container
+        h5 Enter new Admin username and password 
+         
+        br
+        form(method='post', action='adminregister')
+          .form-row
+            .col-md-12.mb-3
+              h5 Enter Username 
+              #alertname.alert_box
+              input.form-control(type='username', name='username', placeholder='Username', aria-describedby='inputGroupPrepend', onfocus='myfocus(this)', onblur='myblur(this)' )
+            
+            .col-md-12.mb-3
+              h5 Enter Password 
+              #alertpassword.alert_box
+              input.form-control(type='password', name='password', ng-model='password', placeholder='Password',  onfocus='myfocus(this)', onblur='myblur(this)')
+              
+              br
+              br
+              input#sendMe.btn.btn-dark(type='submit', value='Add Admin')     
+           

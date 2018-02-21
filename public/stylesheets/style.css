@@ -1,0 +1,248 @@
+ * {
+ margin: 0;
+ padding: 0;
+ font-family: 'Poppins', sans-serif;
+ }
+ .checkValid .ng-invalid {
+ border: 1px solid red;
+ }
+ footer {
+ color: red;
+ }
+ .container {
+ margin-top: 125px;
+ }
+ .navbar {
+ background-color: #102c48;
+ font-size: 18px;
+ }
+ .navbar-dark .navbar-nav .nav-link:focus,
+ .navbar-dark .navbar-nav .nav-link:hover:hover {
+ color: orange;
+ }
+ .btn-outline-success {
+ color: orange;
+ background-color: transparent;
+ background-image: none;
+ border-color: orange;
+ }
+ .btn-outline-success:hover {
+ background-color: orange;
+ }
+ @media only screen and (max-width: 1000px) {
+ li h5 {
+ display: none;
+ }
+ }
+ @media only screen and (max-width: 368px) {
+ .cartList {
+ width: 50%;
+ }
+ }
+ .card {
+ margin-left: 4%;
+ margin-bottom: 15px;
+ float: left;
+ text-align: center;
+ line-height: 50px;
+ }
+ .card img {
+ width: 150px;
+ margin: 10px auto;
+ 
+ transition:  0.5s ;
+ }
+
+ .card-text {
+ cursor: default;
+ }
+ #cartCnt {
+ color: white;
+ height: 1px;
+ line-height: 1px;
+ margin-left: 13px;
+     font-weight: bold;
+     font-size: 18px;
+ }
+ .btn {
+ background-color: white;
+ color: #102c48;
+ font-weight: bold;
+ border: 1px solid #102c48;
+ }
+ .btn:hover {
+ background-color: #102c48;
+ color: white;
+ font-weight: bold;
+ }
+ #cartContainer {
+ border: 1px solid gray;
+ border-radius: 10px;
+ padding: 25px;
+ }
+ .cartList {
+ color: #102c48;
+ padding: 10px;
+ border-radius: 5px;
+ text-align: center;
+ }
+ .cartList img {
+ float: left;
+ width: 100px;
+ }
+ .list-unstyled li{
+ float: left;
+ margin-left: 15px;
+ width: 25%;
+ }
+ #buyBtn {
+ width: 100px;
+ transform: translateY(10px);
+ padding: 10px;
+ font-size: 24px;
+ color: orange;
+ }
+ .removeBtn,
+ .removeBtn:hover {
+ border: none;
+ background-color: transparent;
+ }
+ .removeBtn img {
+ cursor: pointer;
+ width: 30px;
+ }
+ .modal-body {
+ margin: 10px;
+ color: #102c48;
+ 
+ }
+ .form-group {
+ padding: 3px;
+ }
+ .form-check {
+ margin-bottom: 10px;
+ text-align: center;
+ }
+ .tooltip > .tooltip-inner {
+ background-color: white;
+ color: #102c48;
+ font-weight: bold;
+ border: 1px solid #102c48;
+ }
+ .productsSelect {
+ text-align: center;
+ margin: 20px auto;
+ }
+ .form-check {
+ margin-top: 10px;
+ }
+ .form-check-label {
+ margin-right: 10px;
+ }
+ .container.ng-enter {
+ -webkit-transition: 1.5s linear all;
+ transition: 1.5s linear all;
+ opacity: 0;
+ }
+ .container.ng-enter-active {
+ opacity: 1;
+ }
+ .card.ng-leave {
+ -webkit-transition: 1.5s linear all;
+ transition: 1.5s linear all;
+ opacity: 1;
+ }
+ .card.ng-leave-active {
+ opacity: 0;
+ }
+ .card.ng-enter {
+ -webkit-transition: 1s linear all;
+ transition: 1.5s linear all;
+ opacity: 0;
+ }
+ .card.ng-enter-active {
+ opacity: 1;
+ }
+ input.ng-invalid {
+ border:1px solid pink;
+ }
+ input.ng-valid {
+ border:1.5px solid lightgreen;
+ }
+ #searchInput{
+ border: none;
+ }
+.cartBtn img{
+    width: 50px;
+    cursor: pointer;
+}
+ul.list-group.list-unstyled{
+    
+}
+#usersCard .btn{
+    margin-left: 5px;
+}
+.usersTitle h5{
+    color: darkgoldenrod;
+}
+.deleteUserBtn{
+    color: red;
+    border:1px solid red;
+}
+.deleteUserBtn:hover{
+    color: white;
+    background-color: red;
+}
+.editUserBtn{
+    color: forestgreen;
+    border:1px solid forestgreen;
+}
+.editUserBtn:hover{
+    color: white;
+    background-color: forestgreen;
+}
+#usersCard h3{
+    margin: 50px 45%;
+    width: 200px;
+    color: cornflowerblue;
+}
+#navbarsExampleDefault.collapse.navbar-collapse h3{
+    color: white;
+    margin: 0 50px;
+}
+
+.form-row{
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+}
+.alert_box{
+    color: red;
+}
+
+#truck{
+    background-image: url(/public/images/truck.png) ;
+    background-repeat: round;
+    width: 100px;
+    height: 100px;
+    transition: 1s linear all;
+    animation: truck 15s infinite;
+}
+  
+
+ @keyframes truck {
+     0% {
+         margin-left: -50%;
+     }
+     
+     100% {
+         margin-left: 120%;
+         display: none;
+     }
+
+
+
+ }
+#cntr{
+    margin: 0 auto;
+}

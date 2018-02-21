@@ -1,0 +1,30 @@
+extends layout
+head
+ title Tiny-shop - Register
+body
+    block content
+     .container
+        h5 Already a member? Login to Your Account  
+            a(href='login') here!
+        br
+        form(method='post', action='register', name='myForm', onsubmit='return checkForm()')
+          .form-row
+            .col-md-12.mb-3
+              h5 Enter Username 
+              #alertname.alert_box
+              input.form-control(type='username', name='username', placeholder='Username', aria-describedby='inputGroupPrepend', onfocus='myfocus(this)', onblur='myblur(this)' )
+            .col-md-12.mb-3
+              h5 Enter Email 
+              #alertmail.alert_box
+              input.form-control(type='email', name='email', placeholder='Email', onfocus='myfocus(this)', onblur='myblur(this)')
+            .col-md-12.mb-3
+              h5 Enter Password 
+              #alertpassword.alert_box
+              input.form-control(type='password', name='password', ng-model='password', placeholder='Password',  onfocus='myfocus(this)', onblur='myblur(this)')
+              br
+              input(type='checkbox', name='agree', onclick='show_send()')      
+              span(style='color: #102c48; font-weight: bold')  Agree to terms and conditions  
+              br
+              br
+              input#sendMe.btn.btn-dark(type='submit', value='Sign Me Up!', disabled='', style='opacity:0.5;')     
+           

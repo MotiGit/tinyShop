@@ -1,0 +1,78 @@
+extends logout
+body
+ block content
+    .container.col-6
+        .text-center   
+
+
+          h1    
+            span(style='color: #102c48; font-weight: bold')  Users Panel
+          h5
+            span(style='color: red') Number of users in Database  (#{Object.keys(users).length})
+            br
+            br
+            form(method='post', action='adminUsers', name='deleteUser')
+                          .form-row.col-12
+                            .col-md-12.mb-3
+                              h3 Delete By Email
+                              h5 Enter Email 
+                              input.form-control(type='email', name='email', placeholder='Email', aria-describedby='inputGroupPrepend', onfocus='myfocus(this)', onblur='myblur(this)' )
+                              br
+                              input.btn.btn-primary.deleteUserBtn(type='submit', value='Delete')
+            br
+            br
+            
+            form(method='post', action='adminUsers', name='editUser')
+                          .form-row.col-12
+                            .col-md-12.mb-3
+                              h3 Edit By Email
+                              h5 Enter Email 
+                              input.form-control(type='email', name='email', placeholder='Email', aria-describedby='inputGroupPrepend', onfocus='myfocus(this)', onblur='myblur(this)' )
+                              br
+           
+                              h6  
+                               span(style='color: red; font-weight: bold')  Enter New Username 
+                              input.form-control(type='username', name='username', placeholder='Username', aria-describedby='inputGroupPrepend', onfocus='myfocus(this)', onblur='myblur(this)' )
+                            .col-md-12.mb-3
+                              h6  
+                               span(style='color: red; font-weight: bold')  Enter New Username 
+                              input.form-control(type='password', name='password', ng-model='password', placeholder='Password',  onfocus='myfocus(this)', onblur='myblur(this)')
+                              br
+                              input.btn.btn-primary.editUserBtn(type='submit', value='Edit User')
+                             
+            br
+            br
+            form(method='post', action='adminUsers', name='adminAddUser')
+                          .form-row.col-12
+                            .col-md-12.mb-3
+                              h3 Add User
+                              h5 Enter Username 
+                              #alertname.alert_box
+                              input.form-control(type='username', name='username', placeholder='Username', aria-describedby='inputGroupPrepend', onfocus='myfocus(this)', onblur='myblur(this)' )
+                            .col-md-12.mb-3
+                              h5 Enter Email 
+                              #alertmail.alert_box
+                              input.form-control(type='email', name='email', placeholder='Email', onfocus='myfocus(this)', onblur='myblur(this)')
+                            .col-md-12.mb-3
+                              h5 Enter Password 
+                              #alertpassword.alert_box
+                              input.form-control(type='password', name='password', ng-model='password', placeholder='Password',  onfocus='myfocus(this)', onblur='myblur(this)')
+                              br
+                              input.btn.btn-dark(type='submit', value='Add User')
+                        
+            br
+            h3 Users List In Database
+            br
+            #usersCard
+               each user in users.reverse()     
+                    .form.col-12
+                        ul.list-group
+                            li.list-group-item 
+                             span(style='color:black')  Name:
+                             span(style='color:firebrick')   #{user.username} 
+                             br
+                             span(style='color:black')  Email:
+                             span(style='color:forestgreen')   #{user.email}
+                            li.list-group-item  
+                    br      
+                      

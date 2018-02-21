@@ -1,0 +1,112 @@
+doctype html
+html(lang='en')
+  head
+    title TinyShop User
+    
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    script(src='http://code.jquery.com/jquery-3.2.1.js', integrity='sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=', crossorigin='anonymous')
+    script(src='http://code.jquery.com/ui/1.12.1/jquery-ui.js', integrity='sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=', crossorigin='anonymous')
+    script(src='/public/javascripts/app.js')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css', integrity='sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy', crossorigin='anonymous')
+    link(rel='icon', href='/public/images/shopLogo.png', type='image/gif', sizes='32x32')
+    link(href='https://fonts.googleapis.com/css?family=Poppins', rel='stylesheet')
+    link(rel='stylesheet',
+    href='/stylesheets/style.css')
+  body
+     nav.navbar.navbar-expand-md.navbar-dark.fixed-top#navbarIn
+      img.d-inline-block.align-top(src='/public/images/shopLogo.png', width='75', height='75', alt='Logo Image')
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarsExampleDefault.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='products')
+              | Products 
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='logout') Logout
+          li.nav-item
+        form.form-inline.my-2.my-lg-0
+          input#searchInput.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search', ng-model='userSearch')
+          h6#cartCnt
+        .cartBtn(data-container='body', data-toggle='modal', data-target='#exampleModal')
+            img.rounded(src='/public/images/shopping-cart.png', alt='loginIcon', data-container='body')
+        
+block content
+
+
+
+    // Modal
+    #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Log In or Sign Up to Tiny-Shop
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+
+                // ***********  LOGIN FORM ********
+                div(ng-app='myApp')
+                    div(ng-controller='cartListCtrl')
+                          #cartContainer
+                            p.text-center Click on Buy to Purchase Your Shopping Bag.
+                            ul.list-group.cartList(ng-repeat='item in cart track by $index')
+                              li.list-group-item
+                                img(data-ng-src='{{ item.image }}')
+                                br
+                                ul.list-unstyled
+                                  li
+                                    h5 Product Name
+                                    h6 {{ item.name }}
+                                  li
+                                    h5 Product Description
+                                    h6.card-text(data-toggle='tooltip', data-placement='bottom', title='{{item.description }}') Description
+                                  li
+                                    h5 Product Price
+                                    h6 {{item.price | currency }}
+                                button.btn.removeBtn(ng-click='removeFromCart($index)')
+                                  img(src='/images/x-button.png')
+                            br
+                            .cartList
+                              h4 Total: {{ total() | currency}}
+                              input#buyBtn.btn.btn-primary(type='submit', value='Buy', data-toggle='tooltip', data-placement='right', title='Tooltip on right', data-ng-click='')
+.container(ng-view='')  
+
+    //
+      <hr>
+      <footer>
+      <p>&copy;Tiny-Shop 2017</p>
+      </footer>
+block scripts      
+    // Optional JavaScript
+    // jQuery first, then Popper.js, then Bootstrap JS
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js', integrity='sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4', crossorigin='anonymous')
+    script.
+      /*
+      We can use [body] or the element class/id that wraps the elements with tooltip/popover.
+      Include the data-[] attribute in each element that needs it.
+      */
+      $(document).ready(function() {
+      //Tooltip, activated by hover event
+      $("body").tooltip({
+      selector: "[data-toggle='tooltip']",
+      container: "body"
+      })
+      //Popover, activated by clicking
+      .popover({
+      selector: "[data-toggle='popover']",
+      container: "body",
+      html: true,
+      title: 'Log-In Or Sign-Up',
+      content: '<div ng-controller="cartListCtrl"> h4.text-center Click on Buy to Purchase Your Shopping Bag.ul.list-group.cartList(ng-repeat="item in cart track by $index") li.list-group-item img(data-ng-src="{{ item.image }}") br ul.list-unstyled li h5 Product Name h6 {{ item.name }} li h5 Product Description h6.card-text(data-toggle="tooltip", data-placement="bottom", title="{{item.description }}") Description li h5 Product Price h6 {{item.price | currency }} button.btn.removeBtn(ng-click="removeFromCart($index)") img(src="/images/x-button.png") br .cartList h4 Total: {{ total() | currency}} input#buyBtn.btn.btn-primary(type="submit", value="Buy", data-toggle="tooltip", data-placement="right", title="Tooltip on right", data-ng-click="") }); $(".carousel").carousel({interval: 3500});});</div>'
+      });
+      $('.carousel').carousel({
+      interval: 3500
+      });
+      });            

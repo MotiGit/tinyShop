@@ -1,0 +1,108 @@
+extends logout
+body
+ block content
+    .container.col-6
+      .text-center
+          
+          h1    
+            span(style='color: #102c48; font-weight: bold')  Products Panel
+          h5
+            span(style='color: red') Number of products in Database  (#{Object.keys(products).length})
+            br
+            br
+            form(method='post', action='adminProducts', name='deleteadminProducts', onsubmit='return checkDeleteProduct()')
+                          .form-row.col-12
+                            .col-md-12.mb-3
+                              h3 Delete By ID
+                              h5 Enter Product ID
+                              #alertproductID.alert_box
+                              input.form-control(type='id', name='id', placeholder='Product ID',  onfocus='myfocus(this)', onblur='myblur(this)' )
+                              br
+                              span(style='color: red;font-size: 18px;')  Are You Sure? 
+                              input(type='checkbox', name='agree', onclick='show_delete()')      
+                              br
+                              br
+                              input#sendMe.btn.btn-primary.deleteUserBtn(type='submit', value='Delete', disabled='', style='opacity:0.5;')
+                              br
+                               
+                              
+                          
+            br              
+            form(method='post', action='adminProducts', name='adminEditProduct', onsubmit='return checkProductEdit()')
+                      .form-row.col-12
+                        .col-md-12.mb-3
+                          
+                        .col-md-12.mb-3
+                          #alertid2.alert_box
+                          h3 Edit Product By ID
+                          
+                          h5
+                           span(style='color: firebrick;') Enter Product ID 
+                          input.form-control(type='id', name='id2', placeholder='Product ID',  onfocus='myfocus(this)', onblur='myblur(this)' )
+                          br
+                         .col-md-12.mb-3
+                          h4 Edit Product
+                          br
+                          h6
+                           span(style='color: forestgreen;')  Enter New Category 
+                          #alertcategoryEdit.alert_box
+                          input.form-control(type='category', name='category', placeholder='New Category', aria-describedby='inputGroupPrepend', onfocus='myfocus(this)', onblur='myblur(this)' )  
+                         .col-md-12.mb-3
+                          h6 
+                           span(style='color: forestgreen;')  Enter New Product Name 
+                          #alerteditName.alert_box
+                          input.form-control(type='editName', name='editName', placeholder='Product Name', aria-describedby='inputGroupPrepend', onfocus='myfocus(this)', onblur='myblur(this)' )
+                          
+                        .col-md-12.mb-3
+                          h6 
+                           span(style='color: forestgreen;')  Enter New Price 
+                          #alertpriceEdit.alert_box
+                          input.form-control(type='price', name='price', placeholder='New Price',  onfocus='myfocus(this)', onblur='myblur(this)')
+                          col-md-12.mb-3
+                          h6 
+                           span(style='color: forestgreen;')  Enter New Image Link 
+                          #alertimageEdit.alert_box
+                          input.form-control(type='text', name='image', placeholder='New Image Link (175x175/250x250/500x500)',  onfocus='myfocus(this)', onblur='myblur(this)')
+                          col-md-12.mb-3
+                          h6 
+                           span(style='color: forestgreen;')  Enter New Description 
+                          #alertdescriptionEdit.alert_box
+                          input.form-control(type='description', name='description', placeholder='New Description',  onfocus='myfocus(this)', onblur='myblur(this)')
+                          
+                          br
+                          input#sendMea.btn.btn-primary.editUserBtn(type='submit', value='Edit')
+                          br 
+                          
+                          
+                       
+            br
+            h3 Products List In Database
+            br    
+            #usersCard.col-12
+             each product in products.reverse()     
+                .card.text-center.col-11
+                  .card-body
+                    ul
+                        li.list-group-item 
+                         span(style='color:black')  ID:
+                          span(style='color:firebrick')   #{product._id} 
+                        li.list-group-item 
+                         span(style='color:black')  Category:
+                          span(style='color:firebrick')   #{product.category}
+                        li.list-group-item 
+                         span(style='color:black')  Name:
+                          span(style='color:firebrick')   #{product.name}  
+                        li.list-group-item 
+                         span(style='color:black')  Image Link:
+                          span(style='color:forestgreen')   #{product.image}   
+                        li.list-group-item 
+                         span(style='color:black')  Description:
+                          span(style='color:#371d8d')   #{product.description}
+                        li.list-group-item 
+                         span(style='color:black')  Price:
+                          span(style='color:#bc6c00')   #{product.price}   
+                 
+                    
+                    
+           
+                      

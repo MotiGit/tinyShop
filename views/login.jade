@@ -1,0 +1,25 @@
+
+extends index
+body
+    block content
+     .container
+        h5 Not a member yet? Sign Up free 
+            a(href='register') here!
+        br
+        form(method='post', action='login', name='myLogin', onsubmit='return checkmyLogin()')
+         
+         .form-row
+            .col-md-12.mb-3
+              h5 Enter Username 
+              #alertname.alert_box
+              input.form-control(type='username', name='username', placeholder='Username', aria-describedby='inputGroupPrepend', onfocus='myfocus(this)', onblur='myblur(this)' )
+            .col-md-12.mb-3
+              h5 Enter Password 
+              #alertpassword.alert_box
+              input.form-control(type='password', name='password', ng-model='password', placeholder='Password',  onfocus='myfocus(this)', onblur='myblur(this)')
+              br
+              input#sendMe.btn.btn-dark(type='submit', value='Login')     
+        br  
+        h5 Admin? Click 
+            a(href="/adminLogin") Here!
+            

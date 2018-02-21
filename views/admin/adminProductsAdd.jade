@@ -1,0 +1,69 @@
+extends logout
+body
+ block content
+    .container.col-6
+      .text-center
+          
+          h1    
+            span(style='color: #102c48; font-weight: bold')  Products Panel
+          h5
+            span(style='color: red') Number of products in Database  (#{Object.keys(products).length})
+            br
+            br
+            br             
+            form(method='post', action='adminProductsAdd', name='adminAddProduct' , onsubmit='return checkProductAdd()')
+                      .form-row.col-12
+                        .col-md-12.mb-3
+                          h1 Add Product
+                          h5 Enter Category 
+                          #alertcategory.alert_box
+                          input.form-control(type='text', name='categoryAdd', placeholder='Category', aria-describedby='inputGroupPrepend', onfocus='myfocus(this)', onblur='myblur(this)' )
+                        .col-md-12.mb-3
+                          h5 Enter Name 
+                          #alertPname.alert_box
+                          input.form-control(type='text', name='productNameAdd', placeholder='Name', onfocus='myfocus(this)', onblur='myblur(this)')
+                        .col-md-12.mb-3
+                          h5 Enter Price 
+                          #alertprice.alert_box
+                          input.form-control(type='text', name='priceAdd', placeholder='Price',  onfocus='myfocus(this)', onblur='myblur(this)')
+                          col-md-12.mb-3
+                          h5 Enter Image Link 
+                          #alertimage.alert_box
+                          input.form-control(type='text', name='imageAdd', placeholder='Image Link',  onfocus='myfocus(this)', onblur='myblur(this)')
+                          col-md-12.mb-3
+                          h5 Enter Description 
+                          #alertdescription.alert_box
+                          input.form-control(type='text', name='descriptionAdd', placeholder='Description',  onfocus='myfocus(this)', onblur='myblur(this)')
+                          br
+                          input#sendMe.btn.btn-dark(type='submit', value='Add Product')                   
+            br
+            h3 Products List In Database
+            br    
+            #usersCard.col-12
+             each product in products.reverse()     
+                .card.text-center.col-11
+                  .card-body
+                    ul
+                        li.list-group-item 
+                         span(style='color:black')  ID:
+                          span(style='color:firebrick')   #{product._id} 
+                        li.list-group-item 
+                         span(style='color:black')  Category:
+                          span(style='color:firebrick')   #{product.category}
+                        li.list-group-item 
+                         span(style='color:black')  Name:
+                          span(style='color:firebrick')   #{product.name}  
+                        li.list-group-item 
+                         span(style='color:black')  Image Link:
+                          span(style='color:forestgreen')   #{product.image}   
+                        li.list-group-item 
+                         span(style='color:black')  Description:
+                          span(style='color:#371d8d')   #{product.description}
+                        li.list-group-item 
+                         span(style='color:black')  Price:
+                          span(style='color:#bc6c00')   #{product.price}   
+                 
+                    
+                    
+           
+                      
